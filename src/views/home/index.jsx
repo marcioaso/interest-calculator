@@ -5,6 +5,8 @@ import { form, initialPeriodOptions, setForm } from "~/stores/home";
 import Info from "~/components/Info";
 import { calculator } from "~/util/calculator";
 import { setResults } from "~/stores/results";
+import { createSignal } from "solid-js";
+import OneLineCalculator from "~/components/OneLineCalc";
 
 export default function HomeView() {
 
@@ -30,9 +32,11 @@ export default function HomeView() {
   const updateNumber = (field) => {
     return (e) => {
       const currentValue = form();
+      const {value} = e.target
+      if (!value) return;
       setForm({
         ...currentValue,
-        [field]: +e.target.value || 0,
+        [field]: +value || 0,
       })
       calculateForm();
     }
@@ -50,6 +54,7 @@ export default function HomeView() {
       <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         Compound Insterest Calculator
       </h1>
+      <OneLineCalculator /> 
       <div class={styles.App}>
         <header class={styles.header}>
           <form>
@@ -82,7 +87,7 @@ export default function HomeView() {
                 value={form().period}
                 required
                 label="Period"
-                onKeyUp={updatePeriod}
+                onChange={updatePeriod}
                 select={initialPeriodOptions}
               />
               <NumberInput
