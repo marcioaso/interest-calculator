@@ -1,7 +1,6 @@
 import { createSignal } from "solid-js";
 const calcStyle = `
     flex
-    bg-gray-50
     border
     border-gray-300
     text-gray-900
@@ -9,7 +8,7 @@ const calcStyle = `
     focus:ring-blue-500
     focus:border-blue-500
     block w-full
-    p-2.5 dark:bg-gray-700
+    p-2.5 dark:bg-gray-900
     dark:border-gray-600
     dark:placeholder-gray-400
     dark:text-white
@@ -22,7 +21,7 @@ const inputStyle = `
     text-gray-400
     text-sm
     text-right
-    p-2.5 dark:bg-gray-700
+    p-2.5 dark:bg-transparent
     dark:placeholder-gray-100
     dark:text-white
     outline-none
@@ -33,11 +32,14 @@ export default function OneLineCalculator() {
     const handleInputChange = (e) => {
         const { target: { value } } = e;
         try {
-            const result = eval(value)
+            const result = eval(value) || 0
             setCalc(result)
         } catch (err) {
             setCalc("Err")
         }
+    }
+    const handleOnKeyUp = (e) => {
+        if(e.keyCode === 13) handleInputChange(e);
     }
     return (
         <div class="w-full mb-3 md:grid-cols-2">
@@ -46,6 +48,7 @@ export default function OneLineCalculator() {
                 <input
                     class={inputStyle}
                     onBlur={handleInputChange}
+                    onKeyUp={handleOnKeyUp}
                     placeholder="0"
                 />
                 <div class={`min-w-28 p-2.5 text-base dark:text-gray-400`}>= {`${calc()}`}</div>

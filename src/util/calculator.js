@@ -1,7 +1,8 @@
 
 Number.prototype.d = function() { return +this.toFixed(2) }
 
-export const calculator = (init, monthly, anualfee, months, incomeTax) => {
+export const calculator = (init, monthly, anualfee, months, incomeTax, transactions = []) => {
+    console.log("**** transactions", transactions)
     const table = [{
         row:0,
         info:{total:init,interest:0, invested:init},
@@ -14,9 +15,9 @@ export const calculator = (init, monthly, anualfee, months, incomeTax) => {
     for (let i = 1; i < months+1; i++) {
         const amount = sum * Math.pow(1+perc, 1/12);
         const fee = amount - sum;
-    
+        const apported = transactions[i] ? transactions[i].value : monthly;
         (
-            invested += monthly,
+            invested += apported,
             interest += fee
         )
 
@@ -36,7 +37,7 @@ export const calculator = (init, monthly, anualfee, months, incomeTax) => {
                 net: afterIr.d() 
             },
         })
-        sum += monthly + fee;
+        sum += apported + fee;
     }
     return table;
 }

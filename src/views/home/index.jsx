@@ -3,32 +3,10 @@ import styles from "./Home.module.css";
 import NumberInput from "~/components/NumberInput";
 import { form, initialPeriodOptions, setForm } from "~/stores/home";
 import Info from "~/components/Info";
-import { calculator } from "~/util/calculator";
-import { setResults } from "~/stores/results";
-import { createSignal } from "solid-js";
 import OneLineCalculator from "~/components/OneLineCalc";
+import { calculateForm } from "~/util/calculateForm";
 
 export default function HomeView() {
-
-  const calculateForm = () => {
-    const values = form();
-    const {
-      period:rawPeriod,
-      initial,
-      interest,
-      incomeTax,
-      installment
-    } = values;
-    const periodMulti = rawPeriod.selected? 1 : 12;
-    const table = calculator(
-      initial,
-      installment,
-      interest,
-      rawPeriod.value*periodMulti,
-      incomeTax,
-    ).reverse();
-    setResults(table)
-  }
   const updateNumber = (field) => {
     return (e) => {
       const currentValue = form();
