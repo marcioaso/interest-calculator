@@ -2,10 +2,31 @@ import { Title } from "@solidjs/meta";
 import styles from "./Home.module.css";
 import NumberInput from "~/components/NumberInput";
 import { form, initialPeriodOptions, setForm } from "~/stores/home";
-import Button from "~/components/Button";
 import Info from "~/components/Info";
+import { calculator } from "~/util/calculator";
+import { setResults } from "~/stores/results";
 
 export default function HomeView() {
+
+  const calculateForm = () => {
+    const values = form();
+    const {
+      period:rawPeriod,
+      initial,
+      interest,
+      incomeTax,
+      installment
+    } = values;
+    const periodMulti = rawPeriod.selected? 1 : 12;
+    const table = calculator(
+      initial,
+      installment,
+      interest,
+      rawPeriod.value*periodMulti,
+      incomeTax,
+    ).reverse();
+    setResults(table)
+  }
   const updateNumber = (field) => {
     return (e) => {
       const currentValue = form();
@@ -13,6 +34,7 @@ export default function HomeView() {
         ...currentValue,
         [field]: +e.target.value || 0,
       })
+      calculateForm();
     }
   }
   const updatePeriod = (period) => {
@@ -20,6 +42,7 @@ export default function HomeView() {
       ...form(),
       period,
     })
+    calculateForm();
   }
   return (
     <main class="text-white">
@@ -30,7 +53,7 @@ export default function HomeView() {
       <div class={styles.App}>
         <header class={styles.header}>
           <form>
-            <div class="grid gap-6 mb-6 md:grid-cols-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-5">
               <NumberInput
                 min={0}
                 value={form().initial}
@@ -51,6 +74,7 @@ export default function HomeView() {
                 required
                 label="Interest yearly %"
                 suffix="%" 
+                step=".01"
                 onKeyUp={updateNumber("interest")}
               /> 
               <NumberInput
@@ -60,6 +84,14 @@ export default function HomeView() {
                 label="Period"
                 onKeyUp={updatePeriod}
                 select={initialPeriodOptions}
+              />
+              <NumberInput
+                min={0}
+                value={form().incomeTax}
+                required
+                label="Income tax %"
+                step=".01"
+                onKeyUp={updateNumber("incomeTax")}
               />
             </div>
           </form>

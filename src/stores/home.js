@@ -8,6 +8,7 @@ export const initialState = {
     initial: 0,
     installment: 0,
     interest: 0,
+    incomeTax: 0,
     period: {
         value: 0,
         selected: 0,
