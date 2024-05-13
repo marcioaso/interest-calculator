@@ -12,8 +12,6 @@ export default function App() {
       root={props => (
         <MetaProvider>
           <Title>Interest Calculator</Title>
-          {/* <a href="/">Index</a>
-          <a href="/about">About</a> */}
           <Suspense>{props.children}</Suspense>
         </MetaProvider>
       )}
