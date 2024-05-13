@@ -24,4 +24,4 @@ jobs:
         run: touch .output/public/.nojekyll
 
       - name: serve
-        run: npx server .output/public -p 8000
+        run: npx serve .output/public -p 8000
