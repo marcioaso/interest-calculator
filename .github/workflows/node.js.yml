@@ -18,8 +18,6 @@ jobs:
 
       - name: build
         run: npm run build
-        env:
-          BASE_PATH: /my-app/
 
       - name: create .nojekyll
         run: touch .output/public/.nojekyll
