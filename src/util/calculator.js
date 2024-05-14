@@ -2,7 +2,6 @@
 Number.prototype.d = function() { return +this.toFixed(2) }
 
 export const calculator = (init, monthly, anualfee, months, incomeTax, transactions = []) => {
-    console.log("**** transactions", transactions)
     const table = [{
         row:0,
         info:{total:init,interest:0, invested:init},
