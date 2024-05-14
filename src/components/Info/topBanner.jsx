@@ -4,7 +4,7 @@ import { c } from "~/util/numbers";
 import { THead } from "./shared";
 import OneLineCalculator from "../OneLineCalc";
 
-let shouldShowBanner = true;
+let shouldShowBanner = false;
 
 export default function TopBanner() {
     const [showTopBanner, setShowTopBanner] = createSignal(shouldShowBanner);
