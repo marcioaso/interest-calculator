@@ -29,7 +29,7 @@
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-BAiLa-pT.js",
+    "file": "assets/index-DFFKOGvd.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
@@ -39,7 +39,7 @@
     ]
   },
   "virtual:#vinxi/handler/client": {
-    "file": "assets/client-Ij-BiXHQ.js",
+    "file": "assets/client-qtc856hu.js",
     "name": "client",
     "src": "virtual:#vinxi/handler/client",
     "isEntry": true,
