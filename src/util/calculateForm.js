@@ -1,10 +1,11 @@
-import { transactions, setResults } from "~/stores/results";
+import { transactions, setResults, breakInstallments } from "~/stores/results";
 import { calculator } from "./calculator";
 import { form } from "~/stores/home";
 
 
 export const calculateForm = () => {
     const values = form();
+    console.log("((( ", breakInstallments())
     const {
       period:rawPeriod,
       initial,
@@ -20,6 +21,7 @@ export const calculateForm = () => {
       rawPeriod.value*periodMulti,
       incomeTax,
       transactions(),
+      breakInstallments(),
     ).reverse();
     setResults(table)
   }

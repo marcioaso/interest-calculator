@@ -1,6 +1,7 @@
 import { For, createSignal } from "solid-js";
 import { results } from "~/stores/results";
 import TransactionButton from "../TransactionButton";
+import BreakButton from "../BreakButton";
 import { c } from "~/util/numbers";
 import TopBanner from "./topBanner";
 import { THead } from "./shared";
@@ -26,6 +27,10 @@ export default function Info() {
                                     <TransactionButton
                                         index={i()}
                                         result={result}
+                                    />
+                                    <BreakButton
+                                        index={i()}
+                                        row={result.row}
                                     />
                                 </td>
                                 <td class="text-green-600">{c(result.info.interest)}</td>
