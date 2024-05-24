@@ -14,13 +14,13 @@ export const calculator = (init, monthly, anualfee, months, incomeTax, transacti
     for (let i = 1; i < months+1; i++) {
         const amount = sum * Math.pow(1+perc, 1/12);
         const fee = amount - sum;
+        const instBreak = breakInstallments;
+        const isBroken = instBreak > -1 && i > instBreak;
         let apported = transactions[i] ? transactions[i].value : monthly;
-        if(breakInstallments > -1 && months-i > breakInstallments) apported = 0;
+        if(isBroken) apported = 0;
 
-        (
-            invested += apported,
-            interest += fee
-        )
+        invested += apported;
+        interest += fee;
 
         const tax = (fee * (incomeTax/100));
         const afterIr = (fee - tax);

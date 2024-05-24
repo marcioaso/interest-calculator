@@ -25,12 +25,10 @@ export default function Info() {
                                 <td class="text-yellow-400">
                                     {c(result.info.invested)}
                                     <TransactionButton
-                                        index={i()}
-                                        result={result}
+                                        index={result.row}
                                     />
                                     <BreakButton
-                                        index={i()}
-                                        row={result.row}
+                                        index={result.row}
                                     />
                                 </td>
                                 <td class="text-green-600">{c(result.info.interest)}</td>

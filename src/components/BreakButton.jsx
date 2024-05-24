@@ -2,7 +2,7 @@ import { breakInstallments } from "~/stores/results";
 import { calculateForm } from "~/util/calculateForm";
 import { setBreakInstallments } from "~/stores/results";
 
-export default function BreakButton({index, row}) {
+export default function BreakButton({index}) {
 
     const handleBreak = row => {
         const newBreakInstallments = breakInstallments() === row ? -1 : row;
@@ -14,16 +14,16 @@ export default function BreakButton({index, row}) {
         const current = breakInstallments()
         switch(current) {
             case -1: return ' x ';
-            case row: return ' ... ';
+            case index: return ' ... ';
             default: {
-                return row > current ? '' : ' x ';
+                return index > current ? '' : ' x ';
             }
         }
     }
 
     return (
         <button
-            onClick={() => handleBreak(row)}
+            onClick={() => handleBreak(index)}
         >
             {`${computeButtonText()}`}
         </button>
