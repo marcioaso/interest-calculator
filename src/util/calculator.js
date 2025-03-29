@@ -17,7 +17,7 @@ export const calculator = (init, monthly, anualfee, months, incomeTax, transacti
         const instBreak = breakInstallments;
         const isBroken = instBreak > -1 && i > instBreak;
         let apported = transactions[i] ? transactions[i].value : monthly;
-        if(isBroken) apported = 0;
+        if(isBroken && !transactions[i]) apported = 0;
 
         invested += apported;
         interest += fee;

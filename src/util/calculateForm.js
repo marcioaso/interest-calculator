@@ -5,7 +5,6 @@ import { form } from "~/stores/home";
 
 export const calculateForm = () => {
     const values = form();
-    console.log("((( ", breakInstallments())
     const {
       period:rawPeriod,
       initial,
