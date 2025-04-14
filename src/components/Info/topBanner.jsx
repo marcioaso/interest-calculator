@@ -16,7 +16,6 @@ export default function TopBanner() {
             if(shouldShowBanner !== showBanner) {
                 setShowTopBanner(showBanner);
                 shouldShowBanner = showBanner;
-                console.log(showBanner)
             }
         })
     } catch(err) {
@@ -60,9 +59,6 @@ export default function TopBanner() {
                 ${showTopBanner()? '' : 'hidden'}
             `}
         >
-            <div class="px-4 pt-2">
-                <OneLineCalculator />
-            </div>
             {renderContent()}
         </div>
     )

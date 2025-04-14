@@ -1,4 +1,4 @@
-import { For, createSignal } from "solid-js";
+import { For } from "solid-js";
 import { results } from "~/stores/results";
 import TransactionButton from "../TransactionButton";
 import BreakButton from "../BreakButton";
@@ -19,6 +19,7 @@ export default function Info() {
                         <For each={results()}>{(result,i) =>
                             <tr class="odd:bg-slate-900">
                                 <td class="p-3">{result.row}</td>
+                                <td class="text-gray-400 text-sm">{result.info.date}</td>
                                 <td class="text-green-400">{c(result.balance.net)}</td>
                                 <td class="text-red-400">{c(result.balance.incometax)}</td>
                                 <td class="text-sky-400">{c(result.balance.gross)}</td>

@@ -2,7 +2,8 @@ export function THead() {
     return (
         <thead>
             <tr class="bg-slate-700">
-                <td class="w-12 p-3">Month</td>
+                <td class="w-12 p-3">Row</td>
+                <td class="w-12 bg-gray-600">Month</td>
                 <td class="w-22 bg-green-700">Net</td>
                 <td class="w-22 bg-red-700">Tax</td>
                 <td class="w-22 bg-sky-700">Gross</td>

@@ -1,5 +1,11 @@
 
 Number.prototype.d = function() { return +this.toFixed(2) }
+const getMonthYear = i => {
+    const date = new Date();
+    date.setMonth(date.getMonth()+(i))
+    const month = date.getMonth()+1
+    return `${month.toString().padStart(2,'0')}/${date.getFullYear()}`;
+}
 
 export const calculator = (init, monthly, anualfee, months, incomeTax, transactions = [], breakInstallments = -1) => {
     const table = [{
@@ -28,6 +34,7 @@ export const calculator = (init, monthly, anualfee, months, incomeTax, transacti
         table.push({
             row: i,
             info: {
+                date: getMonthYear(i),
                 total: (invested + interest).d(),
                 interest: interest.d(),
                 invested,
