@@ -27,7 +27,7 @@ export default function TopBanner() {
         const last = res[0];
         const {row, balance, info} = last;
         const {net, incometax, gross} = balance
-        const {total, interest, invested} = info;
+        const {total, interest, invested, date} = info;
         return (
             <div class="px-4">
                 <table class="w-full border-b-stone-300 border-b-2">
@@ -35,6 +35,7 @@ export default function TopBanner() {
                     <tbody>
                         <tr>
                             <td class="p-3">{row}</td>
+                            <td class="text-gray-600 text-sm">{date}</td>
                             <td class="text-green-400">{c(net)}</td>
                             <td class="text-red-400">{c(incometax)}</td>
                             <td class="text-sky-400">{c(gross)}</td>
