@@ -1,3 +1,3 @@
-Small interest calculator made in SolidJS published by git actions.
+Small interest calculator made in SolidJS.
 
 Try it: https://marcioaso.github.io/interest-calculator
