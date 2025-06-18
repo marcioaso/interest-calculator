@@ -23,6 +23,7 @@ export default function BreakButton({index}) {
 
     return (
         <button
+            title="Stop adding installments here"
             onClick={() => handleBreak(index)}
         >
             {`${computeButtonText()}`}
