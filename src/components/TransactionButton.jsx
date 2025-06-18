@@ -38,6 +38,7 @@ export default function TransactionButton({ index }) {
     }
     return (
         <button
+            title="Add a custom installment here"
             onClick={() => handleTransaction(index)}
             class={computeButtonStyle()}
             disabled={index === 0}
